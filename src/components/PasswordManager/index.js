@@ -4,12 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import PasswordItem from '../PasswordItem';
 
 
-const passwordList = [{
-    id: uuidv4(),
-    website: "google.com",
-    username: "jngnandan",
-    password: "whattheheck"
-},
+const passwordList = [
 ]
 
 export class PasswordManager extends Component {
@@ -34,21 +29,29 @@ export class PasswordManager extends Component {
         event.preventDefault();
         const { website, username, password, tempList } = this.state
 
+
+
         const newPassword = {
             id: uuidv4(),
             website,
             username,
             password,
         }
-        this.setState({
-            tempList: [...tempList, newPassword],
-            website: "",
-            username: "",
-            password: "",
-            searchInput: "",
-            viewPassword: false,
-        })
+
+        {
+            !password || isNaN(username) &&
+
+                this.setState({
+                    tempList: [...tempList, newPassword],
+                    website: "",
+                    username: "",
+                    password: "",
+                    searchInput: "",
+                    viewPassword: false,
+                })
+        }
     }
+
 
     deltePassword = (id) => {
         const { tempList } = this.state
@@ -139,18 +142,23 @@ export class PasswordManager extends Component {
                     {/* password list */}
                     <div className='flex flex-row justify-end items-center'>
                         <input className='w-4 h-4 m-1' onClick={this.showPasswords} value="checkbox" type="checkbox" />
-                        <p className='text-white text-sm font-bold'>Show Password</p>
+                        <label>
+                            <p className='text-white text-sm font-bold'>Show Password</p>
+
+                        </label>
                     </div>
 
                     {searchResults.length === 0 ?
                         <div className='p-6 text-center'>
                             <img value="no passwords" src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png" />
-                            <p className='text-xl my-2 text-white'>No Passwords</p>
-                        </div>
+                            <label className='text-white text-sm font-bold' for="">
+                                No Password
+
+                            </label>                        </div>
                         :
                         <ul className='flex flex-wrap justify-start items-start'>
                             {searchResults.map(eachitem => (
-                                <PasswordItem viewPassword={viewPassword} deltePassword={this.deltePassword} tempList={eachitem} />
+                                <PasswordItem viewPassword={viewPassword} deltePassword={this.deltePassword} tempList={eachitem} key={eachitem.id} />
                             ))}
                         </ul>
                     }

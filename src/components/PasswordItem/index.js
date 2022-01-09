@@ -17,13 +17,13 @@ export class PasswordItem extends Component {
                         <button className='w-8 h-8 rounded-full bg-green-500 text-white'>S</button>
                         <div className='mx-2 text-white w-20'>
                             <p className='font-semibold text-white'>{website}</p>
-                            <h1 className='mb-1 text-white'>{username}</h1>
+                            <p className='mb-1 text-white'>{username}</p>
                             {/* <p>{encrypted}</p> */}
                             <p className='text-white text-left'>{password}</p>
 
                         </div>
                         <button onClick={deleteItem}>
-                            <img value="delete" alt='delete' testid="delete" className='w-6' src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png" />
+                            <img value="delete" alt='delete' testid="delete" id="delete" className='w-6' src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png" />
                         </button>
 
                     </li>
