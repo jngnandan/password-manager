@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 
 export class PasswordItem extends Component {
 
-
     render(props) {
         const { tempList, deltePassword, viewPassword } = this.props
         const { id, website, username, password } = tempList

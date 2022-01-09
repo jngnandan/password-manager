@@ -137,11 +137,18 @@ export class PasswordManager extends Component {
                         <p className='text-white text-sm font-bold'>Show Password</p>
                     </div>
 
-                    <div className='flex flex-wrap justify-start items-start'>
-                        {searchResults.map(eachitem => (
-                            <PasswordItem viewPassword={viewPassword} deltePassword={this.deltePassword} tempList={eachitem} />
-                        ))}
-                    </div>
+                    {searchResults.length === 0 ?
+                        <div className='p-6'>
+                            <img src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png" />
+                        </div>
+                        :
+                        <div className='flex flex-wrap justify-start items-start'>
+                            {searchResults.map(eachitem => (
+                                <PasswordItem viewPassword={viewPassword} deltePassword={this.deltePassword} tempList={eachitem} />
+                            ))}
+                        </div>
+                    }
+
                 </div>
 
 
